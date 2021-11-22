@@ -10,7 +10,11 @@ from django.conf import settings
 import json
 
 # Create your views here.
+@api_view(["POST"])
+def Name(names):
+    try:
+        name=json.loads(names.body)
 
-class name(APIView):
-    def get(self,request):
-        return Response("Hello World")
+        return JsonResponse("Hello"+name,safe=False)
+    except ValueError as e:
+        return Response(e.args[0],status.HTTP_400_BAD_REQUEST)
