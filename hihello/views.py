@@ -13,4 +13,4 @@ import json
 
 class name(APIView):
     def get(self,request):
-        return Response("hello")
+        return Response("Hello World")
